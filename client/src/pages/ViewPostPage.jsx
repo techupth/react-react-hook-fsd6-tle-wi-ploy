@@ -18,8 +18,11 @@ function ViewPostPage() {
 
   useEffect(() => {
     getPosts();
-    getPostById();
   }, []);
+
+  useEffect(() => {
+    getPostById();
+  }, [params.id]);
 
   return (
     <div>
@@ -37,7 +40,12 @@ function ViewPostPage() {
             <div key={post.id} className="post">
               <h1>{post.title}</h1>
               <div className="post-actions">
-                <button className="view-button">View post</button>
+                <button
+                  className="view-button"
+                  onClick={() => navigate(`/post/view/${post.id}`)}
+                >
+                  View post
+                </button>
               </div>
             </div>
           );
